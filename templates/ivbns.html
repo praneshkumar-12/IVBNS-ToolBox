@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Python Tool for Interval Valued Bipolar Neutrosophic Sets</title>
+        <style>
+            body {
+              font-family: 'Arial', sans-serif;
+              background-color: #f7f7f7;
+              margin: 0;
+              padding: 0;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+            }
+            header {
+              background-color: #333;
+              color: #fff;
+              text-align: center;
+              padding: 20px;
+              width: 100%;
+              box-sizing: border-box;
+            }
+            main {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin: 20px;
+            }
+            .row {
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              box-sizing: border-box;
+            }
+            .column {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              margin: 10px;
+            }
+            textarea {
+              width: 300px;
+              height: 150px;
+              margin: 10px;
+              padding: 10px;
+              box-sizing: border-box;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+            }
+            button {
+              padding: 10px;
+              margin: 5px;
+              cursor: pointer;
+              background-color: #4CAF50;
+              color: white;
+              border: none;
+              border-radius: 8px;
+              text-align: center;
+              text-decoration: none;
+              display: inline-block;
+              font-size: 16px;
+              transition-duration: 0.4s;
+              height: 38.4px;
+              width: 126.725px
+            }
+            button:hover {
+              background-color: #45a049;
+              color: white;
+            }
+            #result {
+              margin-top: 20px;
+              margin-left: 193px;
+              padding: 10px;
+              box-sizing: border-box;
+              border: 1px solid #ccc;
+              border-radius: 8px;
+              background-color: #fff;
+            }
+            textarea{
+              width: 403px;
+              height: 158px;
+              resize: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <h1 style="margin: 0;">Python Tool for Interval Valued Bipolar Neutrosophic Sets</h1>
+        </header>
+        <main>
+            <form method="post" action="{{ url_for('calculate') }}">
+                <div class="row">
+                    <div class="column">
+                        <label for="matrix1">Enter Matrix 1:</label>
+                        <textarea id="matrix1" name="matrix1" placeholder="Type values for Matrix 1...">{{ matrix1 }}</textarea>
+                        <button type="submit" name="submit_button" value="complement_1" id="complement_1">Complement</button>
+                        <button type="submit" name="submit_button" value="score_1" id="score_1">Score</button>
+                        <button type="submit" name="submit_button" value="accuracy_1" id="accuracy_1">Accuracy</button>
+                    </div>
+                    <div class="column">
+                        <label for="matrix2scalar">Enter Matrix 2/Scalar:</label>
+                        <textarea id="matrix2scalar" name="matrix2scalar" placeholder="Type values for Matrix 2/Scalar...">{{ matrix2 }}</textarea>
+                        <button type="submit" name="submit_button" value="complement_2" id="complement_2">Complement</button>
+                        <button type="submit" name="submit_button" value="score_2" id="score_2">Score</button>
+                        <button type="submit" name="submit_button" value="accuracy_2" id="accuracy_2">Accuracy</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <button type="submit" name="submit_button" value="check_equality" id="check_equality">Check Equality</button>
+                        <button type="submit" name="submit_button" value="check_subset" id="check_subset">Check Subset</button>
+                    </div>
+                    <div class="column">
+                        <button type="submit" name="submit_button" value="union" id="union">Union</button>
+                        <button type="submit" name="submit_button" value="intersection" id="intersection">Intersection</button>
+                    </div>
+                    <div class="column">
+                        <button type="submit" name="submit_button" value="multiply" id="multiply">Multiply</button>
+                        <button type="submit" name="submit_button" value="add" id="add">Add</button>
+                    </div>
+                </div>
+            </form>
+            <div class="row">
+                <div class="column">
+                    <label for="result" style="margin-left:190px">Result:</label>
+                    <textarea id="result">{{ result }}</textarea>
+                </div>
+            </div>
+        </main>
+        <script>
+            {% if change_color %}
+              document.getElementById("{{ button_id }}").style.backgroundColor = "#cb4132";
+            {% endif %}
+            
+            {% if alertmessage %}
+              alert("{{ message }}");
+            {% endif %}
+            
+        </script>
+    </body>
+</html>
